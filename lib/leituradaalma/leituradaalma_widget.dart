@@ -28,6 +28,8 @@ class _LeituradaalmaWidgetState extends State<LeituradaalmaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LeituradaalmaModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -24,6 +24,8 @@ class _JornadaconcluidaWidgetState extends State<JornadaconcluidaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => JornadaconcluidaModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

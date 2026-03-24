@@ -27,6 +27,8 @@ class _PortalautocuraaudioWidgetState extends State<PortalautocuraaudioWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PortalautocuraaudioModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

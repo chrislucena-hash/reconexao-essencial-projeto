@@ -28,6 +28,8 @@ class _ReconexoESSENCIALWidgetState extends State<ReconexoESSENCIALWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ReconexoESSENCIALModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

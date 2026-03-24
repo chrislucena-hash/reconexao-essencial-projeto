@@ -26,6 +26,8 @@ class _OtemploealuzWidgetState extends State<OtemploealuzWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OtemploealuzModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

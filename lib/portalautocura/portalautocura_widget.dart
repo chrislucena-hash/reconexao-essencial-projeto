@@ -26,6 +26,8 @@ class _PortalautocuraWidgetState extends State<PortalautocuraWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PortalautocuraModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -27,6 +27,8 @@ class _AutocuraWidgetState extends State<AutocuraWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AutocuraModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

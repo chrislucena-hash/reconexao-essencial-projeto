@@ -25,6 +25,8 @@ class _AtencaoWidgetState extends State<AtencaoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AtencaoModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -26,6 +26,8 @@ class _VideoWidgetState extends State<VideoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => VideoModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -26,6 +26,8 @@ class _GuiaWidgetState extends State<GuiaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => GuiaModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

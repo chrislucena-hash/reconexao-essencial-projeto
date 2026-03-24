@@ -26,6 +26,8 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EvolucaoModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -26,6 +26,8 @@ class _SendasagradaWidgetState extends State<SendasagradaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SendasagradaModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

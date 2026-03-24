@@ -29,6 +29,8 @@ class _BussoladaalmaWidgetState extends State<BussoladaalmaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BussoladaalmaModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

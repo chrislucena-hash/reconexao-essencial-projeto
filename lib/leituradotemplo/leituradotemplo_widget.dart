@@ -28,6 +28,8 @@ class _LeituradotemploWidgetState extends State<LeituradotemploWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LeituradotemploModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
