@@ -61,8 +61,6 @@ class _NavBarWithMiddleButtonWidgetState
                   elevation: 0.0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(0.0),
-                      bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     ),
@@ -84,8 +82,6 @@ class _NavBarWithMiddleButtonWidgetState
                         )
                       ],
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0.0),
-                        bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(20.0),
                         topRight: Radius.circular(20.0),
                       ),

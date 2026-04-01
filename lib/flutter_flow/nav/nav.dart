@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '/auth/base_auth_user_provider.dart';
-
+import '/auth/custom_auth/custom_auth_user_provider.dart';
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -22,8 +23,8 @@ class AppStateNotifier extends ChangeNotifier {
   static AppStateNotifier? _instance;
   static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
 
-  BaseAuthUser? initialUser;
-  BaseAuthUser? user;
+  ReconexaoEssencialAuthUser? initialUser;
+  ReconexaoEssencialAuthUser? user;
   bool showSplashImage = true;
   String? _redirectLocation;
 
@@ -48,7 +49,7 @@ class AppStateNotifier extends ChangeNotifier {
   /// to perform subsequent actions (such as navigation) afterwards.
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
-  void update(BaseAuthUser newUser) {
+  void update(ReconexaoEssencialAuthUser newUser) {
     final shouldUpdate =
         user?.uid == null || newUser.uid == null || user?.uid != newUser.uid;
     initialUser ??= newUser;
@@ -370,7 +371,7 @@ class FFRoute {
                     ),
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

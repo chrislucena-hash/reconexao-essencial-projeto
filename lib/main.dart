@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'auth/firebase_auth/firebase_user_provider.dart';
-import 'auth/firebase_auth/auth_util.dart';
 
+import 'auth/custom_auth/auth_util.dart';
+import 'auth/custom_auth/custom_auth_user_provider.dart';
+
+import 'backend/push_notifications/push_notifications_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -15,6 +17,8 @@ void main() async {
   usePathUrlStrategy();
 
   await initFirebase();
+
+  await authManager.initialize();
 
   runApp(MyApp());
 }
@@ -54,7 +58,9 @@ class _MyAppState extends State<MyApp> {
       _router.routerDelegate.currentConfiguration.matches
           .map((e) => getRoute(e))
           .toList();
-  late Stream<BaseAuthUser> userStream;
+  late Stream<ReconexaoEssencialAuthUser> userStream;
+
+  final fcmTokenSub = fcmTokenUserStream.listen((_) {});
 
   @override
   void initState() {
@@ -62,15 +68,21 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = reconexaoEssencialFirebaseUserStream()
+    userStream = reconexaoEssencialAuthUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
       });
-    jwtTokenStream.listen((_) {});
+
     Future.delayed(
       Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
+  }
+
+  @override
+  void dispose() {
+    fcmTokenSub.cancel();
+    super.dispose();
   }
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {

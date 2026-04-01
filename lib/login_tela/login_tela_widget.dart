@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/custom_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -514,21 +514,8 @@ class _LoginTelaWidgetState extends State<LoginTelaWidget>
                                                       onPressed: () async {
                                                         GoRouter.of(context)
                                                             .prepareAuthEvent();
-
-                                                        final user =
-                                                            await authManager
-                                                                .signInWithEmail(
-                                                          context,
-                                                          _model
-                                                              .emailAddressTextController
-                                                              .text,
-                                                          _model
-                                                              .passwordTextController
-                                                              .text,
-                                                        );
-                                                        if (user == null) {
-                                                          return;
-                                                        }
+                                                        await authManager
+                                                            .signIn();
 
                                                         context.goNamedAuth(
                                                             HomePageWidget
